@@ -1,0 +1,2 @@
+# sulapa-eppa
+grafika komputer
