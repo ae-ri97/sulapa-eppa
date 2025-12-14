@@ -127,39 +127,7 @@
       font-size: 0.875rem;
     }
 
-    .nav-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 60px;
-      height: 60px;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(251, 191, 36, 0.5);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 20;
-      font-size: 24px;
-      color: #fbbf24;
-    }
 
-    .nav-button:hover {
-      background: rgba(251, 191, 36, 0.2);
-      border-color: #fbbf24;
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .nav-button.left {
-      left: 24px;
-    }
-
-    .nav-button.right {
-      right: 24px;
-    }
 
     #controls-info {
       position: absolute;
@@ -206,11 +174,7 @@
         bottom: 120px;
       }
 
-      .nav-button {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-      }
+
 
       #controls-info {
         font-size: 0.75rem;
@@ -228,9 +192,7 @@
     <p>Klik motif untuk zoom & lihat detail • Klik area kosong untuk zoom out</p>
   </div>
 
-  <!-- Navigation Buttons -->
-  <div class="nav-button left" id="prev-btn">◀</div>
-  <div class="nav-button right" id="next-btn">▶</div>
+
 
   <!-- 3D Canvas Container -->
   <div id="container"></div>
@@ -252,7 +214,7 @@
   <div id="controls-info">
     <h3>Navigasi:</h3>
     <ul>
-      <li>◀▶ Pindah daerah</li>
+
       <li>🖱️ Klik motif = Zoom + detail</li>
       <li>🖱️ Klik kosong = Zoom out</li>
       <li>👆 Hover = Highlight</li>
@@ -268,8 +230,8 @@
           {
             id: 1,
             name: "Pa'tedong",
-            description: "Motif geometris berbentuk belah ketupat yang melambangkan kesuburan dan kehidupan. Sering digunakan dalam upacara adat Toraja.",
-            color: '#8B4513',
+            description: "Pa'tedong berasal dari kata tedong yang berarti kerbau. Kerbau bagi masyarakat Toraja adalah hewan paling sakral, bergengsi, dan bernilai tinggi. Karena itu, motif Pa’tedong menjadi simbol utama dalam ukiran, rumah adat (Tongkonan), dan kain tenun Toraja.",
+            color: 'black',
             imageUrl: 'asset/Pa\'tedong.jpg'
           },
           {
@@ -296,14 +258,14 @@
             name: "Sobbi Tettong",
             description: "Motif bunga yang melambangkan keindahan dan keharuman. Menggambarkan kesucian dan keanggunan dalam budaya Bugis.",
             color: '#FFD700',
-            imageUrl: 'asset/motiff.png'
+            imageUrl: 'asset/sobbi tettong.png'
           },
           {
             id: 2,
-            name: "Balo Caca' Wali",
+            name: "Lagosi",
             description: "Motif yang menggambarkan persatuan dan kerjasama dalam masyarakat Bugis. Melambangkan ikatan kekeluargaan yang kuat.",
             color: '#FF8C00',
-            imageUrl: 'asset/motif balo caca\' wali.png'
+            imageUrl: 'asset/lagosi.png'
           },
           {
             id: 3,
@@ -401,8 +363,7 @@
       container.addEventListener('click', onMouseClick);
       container.addEventListener('mousemove', onMouseMove);
       window.addEventListener('resize', onWindowResize);
-      prevBtn.addEventListener('click', showPrevRegion);
-      nextBtn.addEventListener('click', showNextRegion);
+
 
       // Hide loading
       setTimeout(() => {
@@ -471,7 +432,7 @@
         // Create plane with texture
         const texture = createTexture(motif.imageUrl);
         const geometry = new THREE.PlaneGeometry(2.5, 2.5);
-        const material = new THREE.MeshStandardMaterial({
+        const material = new THREE.MeshBasicMaterial({
           map: texture,
           side: THREE.DoubleSide
         });
